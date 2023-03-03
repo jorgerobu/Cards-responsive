@@ -1,0 +1,236 @@
+
+body {
+	font-family: 'Montserrat', sans-serif;
+	font-family: 'Roboto Slab', serif;
+}
+
+.container {
+	width: 100%;
+	height: 100vh;
+	background: linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .6)), url("https://images.pexels.com/photos/772803/pexels-photo-772803.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+	background-size: cover;
+	background-position: center;
+}
+
+.heading {
+	color: #fff;
+	font-size: 70px;
+	position: absolute;
+	top: 10%;
+	left: 50%;
+	transform: translate(-50%);
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	text-align: center;
+	/*hace que el espacio en blanco salte a la siguente linea*/
+	white-space: pre-wrap;
+	z-index: 20;
+}
+
+/* Contenedor que alojará las cards*/
+.cards-wrapper {
+	width: 80%;
+	display: flex;
+	justify-content: space-between;
+	/* Bajamos las card y las centramos en pantalla*/
+	position: relative;
+	top: 35%;
+	left: 50%;
+	transform: translate(-50%);
+}
+
+.card {
+	width: 280px;
+	background-color: #eee;
+	display: flex;
+	flex-direction: column;
+	align-items: center; /* Como cambiamos el eje principal a vertical centra horizontalmente los contenidos*/
+	justify-content: space-evenly;
+	/*animación, pendente de facer o disparador*/
+	transition: transform .5s; /* tiempo que tarda en completarse el escalado al facer hover en la card. Podríamos indicarlo en el .card:hover */
+	border-radius: 3px;
+}
+
+/*para fundido imaxes inicial e escalado*/
+@keyframes cardAnim {
+	0% {opacity: 0}
+	100% {opacity: 1}
+}
+
+.card:nth-child(1) { 
+	animation: cardAnim 2s 2.5s backwards; /* retardo de cada card o aprecer, e dirección*/
+}
+
+.card:nth-child(2) {
+	animation: cardAnim 2s 3s backwards; /* a primeira cifra e a duración da animación, a segunda o retardo en iniciarse */
+}
+
+
+.card:nth-child(3) {
+	animation: cardAnim 2s 3.5s backwards;
+}
+
+.card:hover {
+	transform: scale(1.1);
+}
+/*-----------------*/
+
+/* Contido da card */
+.image-top {
+	width: 100%; /* ocupará o 100% do espacio do pai*/
+	height: 220px;
+	object-fit: cover;
+	/*	Dibuja un poligono en el que se verá la foto, el resto no se ve*/
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 73%, 0% 100%); /*poligon(x,y)*/
+	clip-path: polygon(0 0, 100% 0, 100% 73%, 0% 100%);
+}
+
+.profile-image {
+	width: 120px;
+	height: 120px;
+	/*	a imaxe estará por diante do resto do contido da páxina*/
+	/*z-index, non dar valores contiguos por si e necesario incorporar novos z-index*/
+	z-index: 10;
+	border: 10px solid #eee;
+	object-fit: cover;
+	border-radius: 50%;
+	margin-top: -40%;
+}
+
+.profile-image:hover {
+	transform: scale(1.2);
+	box-shadow: 0 0 30px #333;
+	transition: 1s;
+}
+
+.card h1 {
+/*	font-family: 'Montserrat', sans-serif;*/
+	font-size: 22px;
+	color: #555;
+	margin: 10px;
+}
+
+
+.job {
+	font-family: 'Roboto Slab', serif;
+	color: #777;
+	font-weight: 300;
+}
+
+.about-me {
+	font-family: 'Roboto Slab', serif;
+	font-size: 14px;
+	width: 90%;
+	margin: 15px 0;
+	font-style: italic;
+	color: #444;
+	text-align: center;
+}
+
+.card button {
+	width: 120px;
+	padding: 7px;
+	background-color: tomato;
+	border: none;
+	/*quitar contorno*/
+	outline: none;
+	border-radius: 25px;
+	font-family: 'Roboto Slab', serif;
+	color: #eee;
+	box-shadow: 5px 5px 20px rgba(0, 0, 0, .4);
+}
+
+.card:hover button {
+	animation: buttonRotation 2s 1s linear;
+}
+
+/*------------ Animación do botón -------------*/
+@keyframes buttonRotation {
+    0% {transform: scale(1) rotateZ(0)}
+    5% {transform: scale(1.2) rotateZ(5deg)}
+    10% {transform: scale(1.2) rotateZ(-5deg)}
+    15% {transform: scale(1.2) rotateZ(5deg)}
+    20% {transform: scale(1.2) rotateZ(-5deg)}
+    25% {transform: scale(1.2) rotateZ(5deg)}
+    30% {transform: scale(1.2) rotateZ(-5deg)}
+    35% {transform: scale(1.2) rotateZ(5deg)}
+    40% {transform: scale(1.2) rotateZ(-5deg)}
+    45% {transform: scale(1.2) rotateZ(5deg)}
+    50% {transform: scale(1.2) rotateZ(-5deg)}
+    55% {transform: scale(1.2) rotateZ(5deg)}
+    60% {transform: scale(1.2) rotateZ(-5deg)}
+    65% {transform: scale(1.2) rotateZ(5deg)}
+    70% {transform: scale(1.2) rotateZ(-5deg)}
+    75% {transform: scale(1.2) rotateZ(5deg)}
+    80% {transform: scale(1.2) rotateZ(-5deg)}
+    85% {transform: scale(1.2) rotateZ(5deg)}
+    90% {transform: scale(1.2) rotateZ(-5deg)}
+    95% {transform: scale(1.2) rotateZ(5deg)}
+    100% {transform: scale(1) rotateZ(0)}
+}
+/*--------------------------------------------*/
+
+/*----------------- iconos -----------------*/
+.social-icons {
+	width: 150px;
+	list-style: none;
+	display: flex;
+	justify-content: space-evenly;
+	margin: 10px 0 20px 0;
+	border-top: 1px solid #999;
+	padding-top: 18px;
+}
+
+.social-icons i {
+	font-size: 18px;
+}
+
+.fa-square-facebook {
+	color: #3b5998;
+}
+
+.fa-square-instagram {
+	color: tomato;
+}
+
+.fa-square-twitter {
+	color: #0077cc;
+}
+
+.fa-linkedin {
+	color: #0274b3;
+}
+
+.fa-square-facebook:hover {
+	transform: scale(1.2);
+}
+
+.fa-square-instagram:hover {
+	transform: scale(1.2);
+}
+
+.fa-square-twitter:hover {
+	transform: scale(1.2);
+}
+
+.fa-linkedin:hover {
+	transform: scale(1.2);
+}
+/*----------------------------*/
+
+/*========== RESPONSIVE ===========*/
+@media (max-width: 450px) {
+	.heading {
+		font-size: 40px;
+	}
+	.heading::after {
+		height: 33px;
+	}
+}
+
+@media (max-width: 690px){
+	.heading {
+		font-size: 40px;
+		letter-spacing: -2px;
+	}
+}
